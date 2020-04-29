@@ -1,0 +1,32 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NoiseFilter 
+{
+    NoiseSettings settings;
+    Noise noise = new Noise();
+
+    public NoiseFilter (NoiseSettings settings)
+    {
+        this.settings = settings;
+    }
+
+    public float Evaluate(Vector3 point)
+    {
+        float noiseValue = 0;//(noise.Evaluate(point * settings.roughtness + settings.center) + 1) * 0.5f;
+        float frequency = settings.baseRoughtness;
+        float amplitude = 1;
+
+        for(int i = 0; i<settings.numberOfLayers; i++)
+        {
+            float v = noise.Evaluate(point * frequency + settings.center);
+            noiseValue += (v + 1) * 0.5f * amplitude;
+            frequency *= settings.roughtness;
+            amplitude *= settings.persistence;
+        }
+
+        noiseValue = Mathf.Max(0, noiseValue - settings.minValue);
+        return noiseValue * settings.strenght;
+    }
+}

@@ -18,8 +18,8 @@ public class Planet : MonoBehaviour
     [HideInInspector]
     public bool colorSettingsFoldout;
 
-    ShapeGenerator shapeGenerator = new ShapeGenerator();
-    ColorGenerator colorGenerator = new ColorGenerator();
+    readonly ShapeGenerator shapeGenerator = new ShapeGenerator();
+    readonly ColorGenerator colorGenerator = new ColorGenerator();
 
     //save in inspector, but dont show
     [SerializeField, HideInInspector]
@@ -57,7 +57,7 @@ public class Planet : MonoBehaviour
             }
             meshFilters[i].GetComponent<MeshRenderer>().sharedMaterial = colorSettings.planetMaterial;
 
-            terrainFaces[i] = new TerrainFace(shapeGenerator, meshFilters[i].sharedMesh, resolution, directions[i]);
+            terrainFaces[i] = new TerrainFace(shapeGenerator, meshFilters[i].sharedMesh, resolution, directions[i], this.transform.position);
             bool renderFace = faceRenderMask == FaceRenderMask.All || (int)faceRenderMask - 1 == i;
             meshFilters[i].gameObject.SetActive(renderFace);
         }
@@ -99,22 +99,18 @@ public class Planet : MonoBehaviour
         }
 
         colorGenerator.UpdateElevation(shapeGenerator.elevationMinMax);
-        //foreach(TerrainFace face in terrainFaces)
-        //{
-        //    face.ConstructMesh();
-        //}
     }
 
     void GenerateColors()
     {
         colorGenerator.UpdateColors();
-        for (int i = 0; i < 6; i++)
-        {
-            if (meshFilters[i].gameObject.activeSelf)
-            {
-                terrainFaces[i].ConstructUVs(colorGenerator);
-            }
-        }
+        //for (int i = 0; i < 6; i++)
+        //{
+        //    if (meshFilters[i].gameObject.activeSelf)
+        //    {
+        //        terrainFaces[i].ConstructUVs(colorGenerator);
+        //    }
+        //}
     }
 
     private void Update()

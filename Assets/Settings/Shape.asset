@@ -19,8 +19,8 @@ MonoBehaviour:
     noiseSettings:
       filterType: 0
       simpleNoiseSettings:
-        strenght: 0.07
-        numberOfLayers: 4
+        strenght: 0.11
+        numberOfLayers: 3
         baseRoughtness: 1.15
         roughtness: 2.2
         persistence: 0.5
@@ -40,7 +40,7 @@ MonoBehaviour:
     noiseSettings:
       filterType: 0
       simpleNoiseSettings:
-        strenght: 0.14
+        strenght: 1.1
         numberOfLayers: 3
         baseRoughtness: 2.01
         roughtness: 2
@@ -69,7 +69,7 @@ MonoBehaviour:
         center: {x: 0, y: 0, z: 0}
         minValue: 0
       rigidNoiseSettings:
-        strenght: 1
+        strenght: 1.79
         numberOfLayers: 1
         baseRoughtness: 1
         roughtness: 2

@@ -487,7 +487,7 @@ MonoBehaviour:
   shapeSettings: {fileID: 11400000, guid: 2b510f9e9cfa88b4ab3b32b0ade7e57a, type: 2}
   colorSettings: {fileID: 11400000, guid: 703dd6a16f8b5d7459336d75c37ba572, type: 2}
   shapeSettingsFoldout: 0
-  colorSettingsFoldout: 1
+  colorSettingsFoldout: 0
   meshFilters:
   - {fileID: 1285621470}
   - {fileID: 148748053}
@@ -1012,7 +1012,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 468007682}
-  force: 20
+  force: 50
+  radius: 5
   startExplosion: 0
 --- !u!4 &930319425
 Transform:

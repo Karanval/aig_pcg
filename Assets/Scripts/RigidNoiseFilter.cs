@@ -9,7 +9,7 @@ using UnityEngine;
 public class RigidNoiseFilter : INoiseFilter
 {
     NoiseSettings.RigidNoiseSettings settings;
-    Noise noise = new Noise();
+    Noise noise = new Noise(0);
 
     public RigidNoiseFilter(NoiseSettings.RigidNoiseSettings settings)
     {
@@ -23,7 +23,7 @@ public class RigidNoiseFilter : INoiseFilter
         float amplitude = 1;
         float weight = 1;
 
-        for (int i = 0; i < settings.numberOfLayers; i++)
+        for (int i = 0; i < settings.octaves; i++)
         {
             float v = 1 - Mathf.Abs(noise.Evaluate(point * frequency + settings.center));
             v *= v;
@@ -39,5 +39,39 @@ public class RigidNoiseFilter : INoiseFilter
         // no longer clamp so we can get ocean depth //Mathf.Max(0, 
         noiseValue = noiseValue - settings.minValue;
         return noiseValue * settings.strenght;
+    }
+
+    public float Evaluate(float point)
+    {
+        float noiseValue = 0;//(noise.Evaluate(point * settings.roughtness + settings.center) + 1) * 0.5f;
+        float frequency = settings.baseRoughtness;
+        float amplitude = 1;
+        float weight = 1;
+
+        for (int i = 0; i < settings.octaves; i++)
+        {
+            point *= point;
+            // reagions that start low down undetail, and higher up have more details
+            point *= Mathf.Clamp(weight * settings.weightMultiplier, 0, 1);
+            weight = point;
+
+            noiseValue += point * amplitude;
+            frequency *= settings.roughtness;
+            amplitude *= settings.persistence;
+        }
+
+        // no longer clamp so we can get ocean depth //Mathf.Max(0, 
+        noiseValue = noiseValue - settings.minValue;
+        return noiseValue * settings.strenght;
+    }
+
+    public Noise GetNoise()
+    {
+        return noise;
+    }
+
+    public void SetNoise(Noise noise)
+    {
+        this.noise = noise;
     }
 }

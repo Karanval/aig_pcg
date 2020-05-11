@@ -18,7 +18,7 @@ public class NoiseSettings
     {
         public float strenght = 1;
         [Range(1,8)]
-        public int numberOfLayers = 1;
+        public int octaves = 1;
         public float baseRoughtness = 1;
         public float roughtness = 2;
         public float persistence = 0.5f;

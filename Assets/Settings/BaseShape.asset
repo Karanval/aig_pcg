@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32979edbb20d50e46aa513a9d032b8cb, type: 3}
-  m_Name: Shape
+  m_Name: BaseShape
   m_EditorClassIdentifier: 
   planetRadius: 4
   noiseLayers:
@@ -20,15 +20,15 @@ MonoBehaviour:
       filterType: 0
       simpleNoiseSettings:
         strenght: 0.11
-        numberOfLayers: 3
-        baseRoughtness: 1.15
+        octaves: 3
+        baseRoughtness: 1
         roughtness: 2.2
         persistence: 0.5
         center: {x: 0, y: 0, z: 0}
         minValue: 0.98
       rigidNoiseSettings:
         strenght: 1
-        numberOfLayers: 1
+        octaves: 1
         baseRoughtness: 1
         roughtness: 2
         persistence: 0.5
@@ -41,7 +41,7 @@ MonoBehaviour:
       filterType: 0
       simpleNoiseSettings:
         strenght: 1.1
-        numberOfLayers: 3
+        octaves: 3
         baseRoughtness: 2.01
         roughtness: 2
         persistence: 0.31
@@ -49,7 +49,7 @@ MonoBehaviour:
         minValue: 0
       rigidNoiseSettings:
         strenght: 1
-        numberOfLayers: 1
+        octaves: 1
         baseRoughtness: 1
         roughtness: 2
         persistence: 0.5
@@ -62,7 +62,7 @@ MonoBehaviour:
       filterType: 1
       simpleNoiseSettings:
         strenght: 1
-        numberOfLayers: 1
+        octaves: 1
         baseRoughtness: 1
         roughtness: 2
         persistence: 0.5
@@ -70,10 +70,10 @@ MonoBehaviour:
         minValue: 0
       rigidNoiseSettings:
         strenght: 1.79
-        numberOfLayers: 1
+        octaves: 2
         baseRoughtness: 1
         roughtness: 2
         persistence: 0.5
         center: {x: 0, y: 0, z: 0}
         minValue: 0
-        weightMultiplier: 0.8
+        weightMultiplier: 8.24

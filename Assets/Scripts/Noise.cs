@@ -26,6 +26,7 @@ Some changes by Sebastian Lague for use in a tutorial series.
 */
 
 using System;
+using UnityEngine;
 public class Noise
 {
     #region Values
@@ -81,7 +82,7 @@ public class Noise
 
     public Noise()
     {
-        Randomize(0);
+        //Randomize(0);
     }
 
     public Noise(int seed)

@@ -7,6 +7,8 @@ public class Planet : MonoBehaviour
     [Range(2, 256)]
     public int resolution = 10;
     public bool autoUpdate = true;
+    [Range(0,1)]
+    public float rotate = 0f;
     public enum FaceRenderMask { All, Top, Bottom, Left, Right, Front, Back }
     public FaceRenderMask faceRenderMask;
 
@@ -19,17 +21,12 @@ public class Planet : MonoBehaviour
     public bool colorSettingsFoldout;
 
     readonly ShapeGenerator shapeGenerator = new ShapeGenerator();
-    readonly ColorGenerator colorGenerator = new ColorGenerator();
+    public readonly ColorGenerator colorGenerator = new ColorGenerator();
 
     //save in inspector, but dont show
     [SerializeField, HideInInspector]
     MeshFilter[] meshFilters;
     TerrainFace[] terrainFaces;
-
-    //private void OnValidate()
-    //{
-    //    GeneratePlanet();
-    //}
 
     //inflated cube
     void Initialize()
@@ -63,11 +60,17 @@ public class Planet : MonoBehaviour
         }
     }
 
+    public TerrainFace[] GetFaces()
+    {
+        return terrainFaces;
+    }
+
     public void GeneratePlanet()
     {
         Initialize();
         GenerateMesh();
         GenerateColors();
+        GetComponent<NoiseAnimator>().GenerateTexture();
     }
 
     public void OnShapeSettingsUpdated()
@@ -76,6 +79,7 @@ public class Planet : MonoBehaviour
         {
             Initialize();
             GenerateMesh();
+            GenerateColors();
         }
     }
 
@@ -85,6 +89,17 @@ public class Planet : MonoBehaviour
         {
             Initialize();
             GenerateColors();
+        }
+    }
+
+    public void UpdateUVsByExternal(NoiseAnimator noiseAnimator)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (meshFilters[i].gameObject.activeSelf && terrainFaces[i] != null)
+            {
+                terrainFaces[i].ConstructUVsFromNoise(colorGenerator, noiseAnimator);
+            }
         }
     }
 
@@ -104,17 +119,22 @@ public class Planet : MonoBehaviour
     void GenerateColors()
     {
         colorGenerator.UpdateColors();
-        //for (int i = 0; i < 6; i++)
-        //{
-        //    if (meshFilters[i].gameObject.activeSelf)
-        //    {
-        //        terrainFaces[i].ConstructUVs(colorGenerator);
-        //    }
-        //}
+        for (int i = 0; i < 6; i++)
+        {
+            if (meshFilters[i].gameObject.activeSelf)
+            {
+                terrainFaces[i].ConstructUVs(colorGenerator);
+            }
+        }
     }
-
+    bool started = false;
     private void Update()
     {
-        transform.Rotate(new Vector3(0, 0.03f, 0));
+        if (!started)
+        {
+            GeneratePlanet();
+            started = true;
+        }
+        transform.Rotate(new Vector3(0, rotate*Time.deltaTime, 0));
     }
 }

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1241c94906574004f9c282137f17b305, type: 3}
+  m_Name: BaseColorAnimation
+  m_EditorClassIdentifier: 
+  noiseAnimatorType: 0
+  enabled: 0
+  myPcIsSlow: 1
+  weight: 0.423
+  duration: 7
+  color:
+    serializedVersion: 2
+    key0: {r: 0.651503, g: 0.8490566, b: 0.16420433, a: 1}
+    key1: {r: 0.9245283, g: 0.8780631, b: 0.14391243, a: 1}
+    key2: {r: 0.9254902, g: 0.8784314, b: 0.14509805, a: 0}
+    key3: {r: 0.9433962, g: 0.5909178, b: 0.12904951, a: 0}
+    key4: {r: 0.94509804, g: 0.5921569, b: 0.12941177, a: 0}
+    key5: {r: 0.90588236, g: 0.42352942, b: 0.32156864, a: 0}
+    key6: {r: 0.9056604, g: 0.41987464, b: 0.32039872, a: 0}
+    key7: {r: 0.7169812, g: 0.13866144, b: 0.1443852, a: 0}
+    ctime0: 6168
+    ctime1: 9059
+    ctime2: 14649
+    ctime3: 17540
+    ctime4: 24865
+    ctime5: 27563
+    ctime6: 39707
+    ctime7: 47802
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 8
+    m_NumAlphaKeys: 2

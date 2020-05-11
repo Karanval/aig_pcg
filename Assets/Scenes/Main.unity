@@ -482,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 50
   autoUpdate: 1
-  rotate: 0.136
+  rotateSpeed: 2.5
   faceRenderMask: 0
   shapeSettings: {fileID: 11400000, guid: 2b510f9e9cfa88b4ab3b32b0ade7e57a, type: 2}
   colorSettings: {fileID: 11400000, guid: 703dd6a16f8b5d7459336d75c37ba572, type: 2}
@@ -547,7 +547,7 @@ MonoBehaviour:
       center: {x: 0, y: 0, z: 0}
       minValue: 0
       weightMultiplier: 0.8
-  settings: {fileID: 11400000, guid: 486ef52136839e34ea5e46099eabf36b, type: 2}
+  settings: {fileID: 11400000, guid: ee3c469ccfb7b3b489ed4380f8d0eab3, type: 2}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0

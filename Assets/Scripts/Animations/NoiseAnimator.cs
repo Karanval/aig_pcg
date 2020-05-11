@@ -41,7 +41,6 @@ public class NoiseAnimator : MonoBehaviour
         Texture2D planetTexture = planet.colorGenerator.GetTerrainTexture();
         if (planetTexture != null)
         {
-            print(textureModifier == null?"NUUULS ASF":"not null");
 
             Texture2D texture = textureModifier.GenerateTexture(planetTexture, settings.color, textureResolution, settings.weight);
             planet.colorGenerator.SetTexture(texture);
@@ -64,7 +63,7 @@ public class NoiseAnimator : MonoBehaviour
     private void Start()
     {
         planet = this.GetComponentInParent<Planet>();
-        noiseFilter = NoiseFilterFactory.CreateNoisefilter(noiseSettings);
+        noiseFilter = NoiseFilterFactory.CreateNoisefilter(noiseSettings, 0);
         GenerateTexture();
         perlin = new Noise(UnityEngine.Random.Range(0, int.MaxValue));
         oldPerlin = new Noise(UnityEngine.Random.Range(0, int.MaxValue));

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OceanAnimator
   m_EditorClassIdentifier: Assembly-CSharp::NoiseAnimatorSettings
   noiseAnimatorType: 1
-  enabled: 0
+  enabled: 1
   myPcIsSlow: 1
   weight: 0.763
   duration: 5

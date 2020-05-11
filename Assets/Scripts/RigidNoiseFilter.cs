@@ -10,10 +10,19 @@ public class RigidNoiseFilter : INoiseFilter
 {
     NoiseSettings.RigidNoiseSettings settings;
     Noise noise = new Noise(0);
+    int seed = 0 ;
 
-    public RigidNoiseFilter(NoiseSettings.RigidNoiseSettings settings)
+    public RigidNoiseFilter(NoiseSettings.RigidNoiseSettings settings, int seed)
     {
         this.settings = settings;
+        noise = new Noise(seed);
+    }
+
+    public void CreateAndReplaceNoise(int seed)
+    {
+        Noise newNoise = new Noise(seed);
+        this.seed = seed;
+        this.noise = newNoise;
     }
 
     public float Evaluate(Vector3 point)
@@ -41,6 +50,9 @@ public class RigidNoiseFilter : INoiseFilter
         return noiseValue * settings.strenght;
     }
 
+    /*
+    * Used when evaluation of noise is made in a diffeernt place.
+    */
     public float Evaluate(float point)
     {
         float noiseValue = 0;//(noise.Evaluate(point * settings.roughtness + settings.center) + 1) * 0.5f;
@@ -68,6 +80,11 @@ public class RigidNoiseFilter : INoiseFilter
     public Noise GetNoise()
     {
         return noise;
+    }
+
+    public int GetSeed()
+    {
+        return seed;
     }
 
     public void SetNoise(Noise noise)

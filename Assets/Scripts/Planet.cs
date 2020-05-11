@@ -7,8 +7,8 @@ public class Planet : MonoBehaviour
     [Range(2, 256)]
     public int resolution = 10;
     public bool autoUpdate = true;
-    [Range(0,1)]
-    public float rotate = 0f;
+    [Range(0,50)]
+    public float rotateSpeed = 0f;
     public enum FaceRenderMask { All, Top, Bottom, Left, Right, Front, Back }
     public FaceRenderMask faceRenderMask;
 
@@ -103,6 +103,15 @@ public class Planet : MonoBehaviour
         }
     }
 
+    public void GenerateRandomNoise()
+    {
+        foreach(var noiseFilter in shapeGenerator.noiseFilters)
+        {
+            noiseFilter.CreateAndReplaceNoise(UnityEngine.Random.Range(0, int.MaxValue));
+        }
+        GeneratePlanet();
+    }
+
     void GenerateMesh()
     {
         for (int i = 0; i < 6; i++)
@@ -135,6 +144,6 @@ public class Planet : MonoBehaviour
             GeneratePlanet();
             started = true;
         }
-        transform.Rotate(new Vector3(0, rotate*Time.deltaTime, 0));
+        transform.Rotate(new Vector3(0, rotateSpeed*Time.deltaTime, 0));
     }
 }

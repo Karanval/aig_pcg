@@ -5,16 +5,19 @@ using UnityEngine;
 public class ShapeGenerator 
 {
     ShapeSettings settings;
-    INoiseFilter[] noiseFilters;
+    public INoiseFilter[] noiseFilters;
     public MinMax elevationMinMax;
 
     public void UpdateSettings(ShapeSettings settings)
     {
         this.settings = settings;
+        INoiseFilter[] oldFilters = noiseFilters;
         noiseFilters = new INoiseFilter[settings.noiseLayers.Length];
+
         for (int i = 0; i < noiseFilters.Length; i++)
         {
-            noiseFilters[i] = NoiseFilterFactory.CreateNoisefilter(settings.noiseLayers[i].noiseSettings);
+            int seed = oldFilters!=null? oldFilters[i] != null? oldFilters[i].GetSeed() : 0 : 0;
+            noiseFilters[i] = NoiseFilterFactory.CreateNoisefilter(settings.noiseLayers[i].noiseSettings, seed);
         }
         elevationMinMax = new MinMax();
     }

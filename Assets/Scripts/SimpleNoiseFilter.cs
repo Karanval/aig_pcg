@@ -5,11 +5,20 @@ using UnityEngine;
 public class SimpleNoiseFilter : INoiseFilter
 {
     NoiseSettings.SimpleNoiseSettings settings;
-    Noise noise = new Noise(0);
+    Noise noise;
+    int seed = 0;
 
-    public SimpleNoiseFilter (NoiseSettings.SimpleNoiseSettings settings)
+    public SimpleNoiseFilter (NoiseSettings.SimpleNoiseSettings settings, int seed)
     {
         this.settings = settings;
+        noise = new Noise(seed);
+    }
+
+    public void CreateAndReplaceNoise(int seed)
+    {
+        Noise newNoise = new Noise(seed);
+        this.seed = seed;
+        this.noise = newNoise;
     }
 
     public float Evaluate(Vector3 point)
@@ -50,6 +59,11 @@ public class SimpleNoiseFilter : INoiseFilter
     public Noise GetNoise()
     {
         return noise;
+    }
+
+    public int GetSeed()
+    {
+        return seed;
     }
 
     public void SetNoise(Noise noise)

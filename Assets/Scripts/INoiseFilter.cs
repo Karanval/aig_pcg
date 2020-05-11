@@ -8,4 +8,6 @@ public interface INoiseFilter
     float Evaluate(float point);
     Noise GetNoise();
     void SetNoise(Noise noise);
+    void CreateAndReplaceNoise(int seed);
+    int GetSeed();
 }

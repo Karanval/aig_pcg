@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LavaWorldAnimation
   m_EditorClassIdentifier: 
   noiseAnimatorType: 1
-  enabled: 1
+  enabled: 0
   myPcIsSlow: 1
-  weight: 0.634
+  weight: 0.602
   duration: 10
   color:
     serializedVersion: 2

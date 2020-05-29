@@ -44,7 +44,7 @@ public class Noise
             242, 193, 238, 210, 144, 12, 191, 179, 162, 241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31,
             181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93, 222, 114,
             67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
-        };
+        }; //  256 numbers
 
     const int RandomSize = 256;
     const double Sqrt3 = 1.7320508075688772935;
@@ -281,7 +281,7 @@ public class Noise
             }
 
         }
-        else
+        else // seed is 0
         {
             for (int i = 0; i < RandomSize; i++)
                 _random[i + RandomSize] = _random[i] = Source[i];

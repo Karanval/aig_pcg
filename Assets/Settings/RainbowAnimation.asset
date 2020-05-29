@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1241c94906574004f9c282137f17b305, type: 3}
   m_Name: RainbowAnimation
   m_EditorClassIdentifier: 
-  noiseAnimatorType: 1
-  enabled: 1
+  noiseAnimatorType: 0
+  enabled: 0
   myPcIsSlow: 1
   weight: 1
   duration: 6.58

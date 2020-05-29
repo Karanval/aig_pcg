@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32979edbb20d50e46aa513a9d032b8cb, type: 3}
+  m_Name: RoughyShape
+  m_EditorClassIdentifier: 
+  planetRadius: 4
+  noiseLayers:
+  - enabled: 1
+    useFirstLayerAsMask: 0
+    noiseSettings:
+      filterType: 0
+      simpleNoiseSettings:
+        strenght: 0.11
+        octaves: 3
+        baseRoughtness: 1
+        roughtness: 2.08
+        persistence: 0.5
+        center: {x: 0, y: 0, z: 0}
+        minValue: 1
+      rigidNoiseSettings:
+        strenght: 1
+        octaves: 1
+        baseRoughtness: 1
+        roughtness: 2
+        persistence: 0.5
+        center: {x: 0, y: 0, z: 0}
+        minValue: 0
+        weightMultiplier: 0.8
+  - enabled: 1
+    useFirstLayerAsMask: 1
+    noiseSettings:
+      filterType: 1
+      simpleNoiseSettings:
+        strenght: 0.2
+        octaves: 2
+        baseRoughtness: 0.1
+        roughtness: 0.2
+        persistence: 0.1
+        center: {x: 0, y: 0, z: 0}
+        minValue: 0.7
+      rigidNoiseSettings:
+        strenght: 1
+        octaves: 1
+        baseRoughtness: 1
+        roughtness: 2
+        persistence: 0.5
+        center: {x: 0, y: 0, z: 0}
+        minValue: 0
+        weightMultiplier: 0.8
+  - enabled: 1
+    useFirstLayerAsMask: 1
+    noiseSettings:
+      filterType: 1
+      simpleNoiseSettings:
+        strenght: 1.1
+        octaves: 3
+        baseRoughtness: 2.01
+        roughtness: 2
+        persistence: 0.31
+        center: {x: 0, y: 0, z: 0}
+        minValue: 0
+      rigidNoiseSettings:
+        strenght: 1.79
+        octaves: 2
+        baseRoughtness: 1
+        roughtness: 2
+        persistence: 0.5
+        center: {x: 0, y: 0, z: 0}
+        minValue: 0
+        weightMultiplier: 8.24
+  - enabled: 1
+    useFirstLayerAsMask: 1
+    noiseSettings:
+      filterType: 1
+      simpleNoiseSettings:
+        strenght: 1
+        octaves: 1
+        baseRoughtness: 1
+        roughtness: 2
+        persistence: 0.5
+        center: {x: 0, y: 0, z: 0}
+        minValue: 0
+      rigidNoiseSettings:
+        strenght: 1.79
+        octaves: 2
+        baseRoughtness: 1
+        roughtness: 2
+        persistence: 0.5
+        center: {x: 0, y: 0, z: 0}
+        minValue: 0
+        weightMultiplier: 8.24

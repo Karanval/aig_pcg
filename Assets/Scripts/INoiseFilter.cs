@@ -6,8 +6,8 @@ public interface INoiseFilter
 {
     float Evaluate(Vector3 point);
     float Evaluate(float point);
-    Noise GetNoise();
-    void SetNoise(Noise noise);
-    void CreateAndReplaceNoise(int seed);
+    INoise GetNoise();
+    void SetNoise(INoise noise);
+    void CreateAndReplaceNoise(int seed, NoiseType type);
     int GetSeed();
 }

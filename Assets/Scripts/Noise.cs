@@ -26,8 +26,8 @@ Some changes by Sebastian Lague for use in a tutorial series.
 */
 
 using System;
-using UnityEngine;
-public class Noise
+
+public class Noise : INoise
 {
     #region Values
     /// Initial permutation table
@@ -105,12 +105,12 @@ public class Noise
         // Skew the input space to determine which simplex cell we're in
         double s = (x + y + z) * F3;
 
-        // for 3D
+        // for 3D slightly skewed positition
         int i = FastFloor(x + s);
         int j = FastFloor(y + s);
         int k = FastFloor(z + s);
 
-        double t = (i + j + k) * G3;
+        double t = (i + j + k) * G3;//cell origin
 
         // The x,y,z distances from the cell origin
         double x0 = x - (i - t);
@@ -260,7 +260,7 @@ public class Noise
 
     void Randomize(int seed)
     {
-        _random = new int[RandomSize * 2];
+        _random = new int[RandomSize * 2];//256*2
 
         if (seed != 0)
         {
@@ -270,14 +270,14 @@ public class Noise
             var F = new byte[4];
             UnpackLittleUint32(seed, ref F);
 
-            for (int i = 0; i < Source.Length; i++)
+            for (int i = 0; i < Source.Length; i++)//255 times
             {
                 _random[i] = Source[i] ^ F[0];
                 _random[i] ^= F[1];
                 _random[i] ^= F[2];
                 _random[i] ^= F[3];
 
-                _random[i + RandomSize] = _random[i];
+                _random[i + RandomSize] = _random[i];//repeating the array - twice the same
             }
 
         }

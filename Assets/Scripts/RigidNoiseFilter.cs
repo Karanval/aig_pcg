@@ -9,18 +9,18 @@ using UnityEngine;
 public class RigidNoiseFilter : INoiseFilter
 {
     NoiseSettings.RigidNoiseSettings settings;
-    Noise noise = new Noise(0);
+    INoise noise;
     int seed = 0 ;
 
-    public RigidNoiseFilter(NoiseSettings.RigidNoiseSettings settings, int seed)
+    public RigidNoiseFilter(NoiseSettings.RigidNoiseSettings settings, int seed, NoiseType type)
     {
         this.settings = settings;
-        noise = new Noise(seed);
+        noise = NoiseFactory.CreateNoise(type, seed);
     }
 
-    public void CreateAndReplaceNoise(int seed)
+    public void CreateAndReplaceNoise(int seed, NoiseType type)
     {
-        Noise newNoise = new Noise(seed);
+        INoise newNoise = NoiseFactory.CreateNoise(type, seed);
         this.seed = seed;
         this.noise = newNoise;
     }
@@ -77,7 +77,7 @@ public class RigidNoiseFilter : INoiseFilter
         return noiseValue * settings.strenght;
     }
 
-    public Noise GetNoise()
+    public INoise GetNoise()
     {
         return noise;
     }
@@ -87,7 +87,7 @@ public class RigidNoiseFilter : INoiseFilter
         return seed;
     }
 
-    public void SetNoise(Noise noise)
+    public void SetNoise(INoise noise)
     {
         this.noise = noise;
     }

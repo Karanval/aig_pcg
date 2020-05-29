@@ -81,8 +81,8 @@ public class TerrainFace
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
-       // mesh.RecalculateNormals();
-        mesh.normals = normals;
+        mesh.RecalculateNormals();
+        //mesh.normals = normals;
     }
 
     // Separate from mesh generator so it is not slow to update colors

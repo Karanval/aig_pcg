@@ -7,6 +7,7 @@ public class ShapeSettings : ScriptableObject
 {
 
     public float planetRadius = 1;
+    public NoiseType noiseType = NoiseType.SimplexPerlin;
     public NoiseLayer[] noiseLayers;
 
     [System.Serializable]

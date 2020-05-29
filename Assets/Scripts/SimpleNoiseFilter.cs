@@ -5,18 +5,19 @@ using UnityEngine;
 public class SimpleNoiseFilter : INoiseFilter
 {
     NoiseSettings.SimpleNoiseSettings settings;
-    Noise noise;
+    INoise noise;
     int seed = 0;
 
-    public SimpleNoiseFilter (NoiseSettings.SimpleNoiseSettings settings, int seed)
+    public SimpleNoiseFilter (NoiseSettings.SimpleNoiseSettings settings, int seed, NoiseType type)
     {
         this.settings = settings;
-        noise = new Noise(seed);
+        noise = NoiseFactory.CreateNoise(type, seed);
+
     }
 
-    public void CreateAndReplaceNoise(int seed)
+    public void CreateAndReplaceNoise(int seed, NoiseType type)
     {
-        Noise newNoise = new Noise(seed);
+        INoise newNoise = NoiseFactory.CreateNoise(type, seed);
         this.seed = seed;
         this.noise = newNoise;
     }
@@ -56,7 +57,7 @@ public class SimpleNoiseFilter : INoiseFilter
         return noiseValue * settings.strenght;
     }
 
-    public Noise GetNoise()
+    public INoise GetNoise()
     {
         return noise;
     }
@@ -66,7 +67,7 @@ public class SimpleNoiseFilter : INoiseFilter
         return seed;
     }
 
-    public void SetNoise(Noise noise)
+    public void SetNoise(INoise noise)
     {
         this.noise = noise;
     }

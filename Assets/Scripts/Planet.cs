@@ -107,7 +107,7 @@ public class Planet : MonoBehaviour
     {
         foreach(var noiseFilter in shapeGenerator.noiseFilters)
         {
-            noiseFilter.CreateAndReplaceNoise(UnityEngine.Random.Range(0, int.MaxValue));
+            noiseFilter.CreateAndReplaceNoise(UnityEngine.Random.Range(0, int.MaxValue), shapeSettings.noiseType);
         }
         GeneratePlanet();
     }

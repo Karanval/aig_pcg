@@ -6,6 +6,7 @@ using UnityEngine;
 public class NoiseAnimator : MonoBehaviour
 {
     public enum NoiseAnimatorType {All, Ocean, Terrain};
+    public NoiseType noiseType = NoiseType.SimplexPerlin;
     [HideInInspector]
     public bool settingsFoldout;
     public NoiseSettings noiseSettings;
@@ -63,7 +64,7 @@ public class NoiseAnimator : MonoBehaviour
     private void Start()
     {
         planet = this.GetComponentInParent<Planet>();
-        noiseFilter = NoiseFilterFactory.CreateNoisefilter(noiseSettings, 0);
+        noiseFilter = NoiseFilterFactory.CreateNoisefilter(noiseSettings, 0, noiseType);
         GenerateTexture();
         perlin = new Noise(UnityEngine.Random.Range(0, int.MaxValue));
         oldPerlin = new Noise(UnityEngine.Random.Range(0, int.MaxValue));
